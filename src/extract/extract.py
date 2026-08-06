@@ -1,16 +1,10 @@
-from pathlib import Path
+from config.config import RAW_DATA_FOLDER, CSV_PATTERN
 import glob
 from utils.logger import logger
 
 def find_csv_files():
-    current_file = Path(__file__)
-    project_root = current_file.parent.parent.parent
+    return glob.glob(str(RAW_DATA_FOLDER / CSV_PATTERN))
 
-    raw_folder = project_root / "data" / "raw"
-
-    csv_files = glob.glob(str(raw_folder / "*.csv"))
-
-    return csv_files
 def read_csv(csv_file):
     print("=== ETAP EXTRACT ===")
     logger.info("Rozpoczynam etap Extract.")

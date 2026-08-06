@@ -8,6 +8,7 @@ print("=== START ETL PIPELINE ===")
 start_time = time.perf_counter()
 
 csv_files = find_csv_files()
+processed_files = 0
 
 if not csv_files:
     print("Nie znaleziono plików CSV.")
@@ -27,7 +28,15 @@ for csv_file in csv_files:
     save_to_json(transformed_data, csv_file)
     show_statistics(transformed_data)
     print(f"Zakończono przetwarzanie: {csv_file}")
-    
+    processed_files += 1
+
 end_time = time.perf_counter()
 
-print(f"\nCały pipeline zakończył się w {end_time - start_time:.3f} s")
+print("\n========================")
+print("RAPORT ETL")
+print("========================")
+
+print(f"Przetworzono plików: {processed_files}")
+print(f"Czas wykonania: {end_time - start_time:.3f} s")
+
+print("========================")
