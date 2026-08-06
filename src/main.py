@@ -1,6 +1,7 @@
 from extract.extract import read_csv
 from transform.transform import transform_data
 from load.load import save_to_json
+from analytics.statistics import show_statistics
 
 print("=== START ETL PIPELINE ===")
 
@@ -11,4 +12,7 @@ if not data:
     exit()
 
 transformed_data = transform_data(data)
+
 save_to_json(transformed_data)
+
+show_statistics(transformed_data)
