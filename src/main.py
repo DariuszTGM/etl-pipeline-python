@@ -6,6 +6,9 @@ print("=== START ETL PIPELINE ===")
 
 data = read_csv()
 
-transformed_data = transform_data(data)
+if not data:
+    print("Pipeline zatrzymany.")
+    exit()
 
+transformed_data = transform_data(data)
 save_to_json(transformed_data)
