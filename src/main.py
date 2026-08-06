@@ -1,14 +1,14 @@
-from extract.extract import read_csv, find_csv_files
-from transform.transform import transform_data
-from load.load import save_to_json
-from analytics.statistics import show_statistics
-from config.config import (
+from src.extract.extract import read_csv, find_csv_files
+from src.transform.transform import transform_data
+from src.load.load import save_to_json
+from src.analytics.statistics import show_statistics
+from src.config.config import (
     RAW_DATA_FOLDER,
     PROCESSED_DATA_FOLDER,
     ARCHIVE_DATA_FOLDER,
 )
-from utils.file_manager import create_directories
-from utils.file_manager import archive_file
+from src.utils.file_manager import create_directories
+from src.utils.file_manager import archive_file
 import time
 
 

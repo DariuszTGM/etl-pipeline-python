@@ -1,6 +1,6 @@
-from config.config import RAW_DATA_FOLDER, CSV_PATTERN
+from src.config.config import RAW_DATA_FOLDER, CSV_PATTERN
 import glob
-from utils.logger import logger
+from src.utils.logger import logger
 
 def find_csv_files():
     return glob.glob(str(RAW_DATA_FOLDER / CSV_PATTERN))

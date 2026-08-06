@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from config.config import PROCESSED_DATA_FOLDER
+from src.config.config import PROCESSED_DATA_FOLDER
 
 
 def save_to_json(records, csv_file):

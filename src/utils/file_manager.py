@@ -1,7 +1,7 @@
 import shutil
 from pathlib import Path
 
-from config.config import ARCHIVE_DATA_FOLDER
+from src.config.config import ARCHIVE_DATA_FOLDER
 
 
 def archive_file(csv_file):
