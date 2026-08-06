@@ -1,18 +1,33 @@
-from extract.extract import read_csv
+from extract.extract import read_csv, find_csv_files
 from transform.transform import transform_data
 from load.load import save_to_json
 from analytics.statistics import show_statistics
+import time
 
 print("=== START ETL PIPELINE ===")
+start_time = time.perf_counter()
 
-data = read_csv()
+csv_files = find_csv_files()
 
-if not data:
-    print("Pipeline zatrzymany.")
+if not csv_files:
+    print("Nie znaleziono plików CSV.")
     exit()
 
-transformed_data = transform_data(data)
+for csv_file in csv_files:
 
-save_to_json(transformed_data)
+    print(f"\nPrzetwarzam plik: {csv_file}")
 
-show_statistics(transformed_data)
+    data = read_csv(csv_file)
+
+    if not data:
+        print("Pomijam plik.")
+        continue
+
+    transformed_data = transform_data(data)
+    save_to_json(transformed_data, csv_file)
+    show_statistics(transformed_data)
+    print(f"Zakończono przetwarzanie: {csv_file}")
+    
+end_time = time.perf_counter()
+
+print(f"\nCały pipeline zakończył się w {end_time - start_time:.3f} s")
