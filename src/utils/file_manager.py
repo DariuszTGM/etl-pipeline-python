@@ -12,3 +12,8 @@ def archive_file(csv_file):
     shutil.move(csv_path, destination)
 
     print(f"Przeniesiono {csv_path.name} do archive.")
+
+
+def create_directories(*directories):
+    for directory in directories:
+        Path(directory).mkdir(parents=True, exist_ok=True)

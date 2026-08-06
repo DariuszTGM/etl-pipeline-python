@@ -2,10 +2,23 @@ from extract.extract import read_csv, find_csv_files
 from transform.transform import transform_data
 from load.load import save_to_json
 from analytics.statistics import show_statistics
+from config.config import (
+    RAW_DATA_FOLDER,
+    PROCESSED_DATA_FOLDER,
+    ARCHIVE_DATA_FOLDER,
+)
+from utils.file_manager import create_directories
 from utils.file_manager import archive_file
 import time
 
+
+
 print("=== START ETL PIPELINE ===")
+create_directories(
+    RAW_DATA_FOLDER,
+    PROCESSED_DATA_FOLDER,
+    ARCHIVE_DATA_FOLDER
+)
 start_time = time.perf_counter()
 
 csv_files = find_csv_files()
