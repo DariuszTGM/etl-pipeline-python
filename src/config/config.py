@@ -9,3 +9,5 @@ RAW_DATA_FOLDER = PROJECT_ROOT / "data" / "raw"
 PROCESSED_DATA_FOLDER = PROJECT_ROOT / "data" / "processed"
 
 CSV_PATTERN = "*.csv"
+
+ARCHIVE_DATA_FOLDER = PROJECT_ROOT / "data" / "archive"

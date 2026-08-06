@@ -2,6 +2,7 @@ from extract.extract import read_csv, find_csv_files
 from transform.transform import transform_data
 from load.load import save_to_json
 from analytics.statistics import show_statistics
+from utils.file_manager import archive_file
 import time
 
 print("=== START ETL PIPELINE ===")
@@ -26,6 +27,9 @@ for csv_file in csv_files:
 
     transformed_data = transform_data(data)
     save_to_json(transformed_data, csv_file)
+
+    archive_file(csv_file)
+
     show_statistics(transformed_data)
     print(f"Zakończono przetwarzanie: {csv_file}")
     processed_files += 1
