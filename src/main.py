@@ -10,6 +10,8 @@ from src.config.config import (
 from src.utils.file_manager import create_directories
 from src.utils.file_manager import archive_file
 import time
+import traceback
+from src.utils.logger import logger
 
 
 
@@ -29,23 +31,32 @@ if not csv_files:
     exit()
 
 for csv_file in csv_files:
+    try:
+        print(f"\nPrzetwarzam plik: {csv_file}")
 
-    print(f"\nPrzetwarzam plik: {csv_file}")
+        data = read_csv(csv_file)
 
-    data = read_csv(csv_file)
+        if not data:
+            print("Pomijam plik.")
+            continue
 
-    if not data:
-        print("Pomijam plik.")
-        continue
+        transformed_data = transform_data(data)
+        save_to_json(transformed_data, csv_file)
 
-    transformed_data = transform_data(data)
-    save_to_json(transformed_data, csv_file)
+        archive_file(csv_file)
 
-    archive_file(csv_file)
+        show_statistics(transformed_data)
+        print(f"Zakończono przetwarzanie: {csv_file}")
 
-    show_statistics(transformed_data)
-    print(f"Zakończono przetwarzanie: {csv_file}")
-    processed_files += 1
+        processed_files += 1
+
+    except Exception as e:
+        print("\nWystąpił błąd podczas przetwarzania pliku.")
+        print(e)
+
+        logger.exception("Wystąpił błąd podczas przetwarzania pliku.")
+
+traceback.print_exc()
 
 end_time = time.perf_counter()
 
