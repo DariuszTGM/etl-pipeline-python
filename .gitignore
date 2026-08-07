@@ -22,8 +22,14 @@ env/
 Thumbs.db
 
 # Generated data
-data/archive/
-data/processed/
+data/archive/*
+data/processed/*
+
+!data/archive/.gitkeep
+!data/archive/sample_sales.csv
+
+!data/processed/.gitkeep
+!data/processed/sample_sales.json
 
 # Python cache
 *.egg-info/
