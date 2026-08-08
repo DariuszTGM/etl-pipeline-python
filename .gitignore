@@ -33,3 +33,6 @@ data/processed/*
 
 # Python cache
 *.egg-info/
+
+# Environment variables
+.env

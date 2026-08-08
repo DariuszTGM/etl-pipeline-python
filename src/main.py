@@ -56,7 +56,6 @@ for csv_file in csv_files:
 
         logger.exception("Wystąpił błąd podczas przetwarzania pliku.")
 
-traceback.print_exc()
 
 end_time = time.perf_counter()
 
