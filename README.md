@@ -1,4 +1,4 @@
-# 🚀 ETL Pipeline in Python
+# ETL Pipeline in Python
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
 ![Pytest](https://img.shields.io/badge/Tests-3%20Passed-brightgreen)
